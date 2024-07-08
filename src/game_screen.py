@@ -22,7 +22,7 @@ def init_game(pantalla: pygame.Surface, config):
   pygame.time.set_timer(ADDELITEENEMY, 2870)
   # Evento para agregar un elemento Boost
   ADDBOOST = pygame.USEREVENT + 4
-  pygame.time.set_timer(ADDBOOST, 10000)
+  pygame.time.set_timer(ADDBOOST, 12000)
   # Evento para sacarle el boost al jugador
   REMOVEBOOST = pygame.USEREVENT + 5
 

@@ -14,7 +14,7 @@ def main_menu_screen(pantalla: pygame.Surface, config):
       if event.type == pygame.QUIT:
         quit_game()
 
-    mostrar_texto(pantalla, f'CASTEL SIEGE', fuente2, coordenada=(config["SCREEN_WIDTH"] // 2, 100), color= config["GREEN"])
+    mostrar_texto(pantalla, f'CASTLE SIEGE', fuente2, coordenada=(config["SCREEN_WIDTH"] // 2, 100), color= config["GREEN"])
 
     dibujar_boton(pantalla, "JUGAR", pygame.Rect(300, 200, 200, 50), config["BLUE"], config["YELLOW"], fuente, config, init_game)
 
