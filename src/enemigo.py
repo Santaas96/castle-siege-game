@@ -22,7 +22,7 @@ class EnemigoNormal():
     # pantalla.blit(self.image, self.rect)
     fuente = pygame.font.Font(None, 40)
     mostrar_texto(self.pantalla, f'{formatear_vidas_enemigo(self.vida)}', fuente, color=self.config["RED"], coordenada=(self.rect.center[0], self.rect.top - 10))
-    pygame.draw.rect(pantalla, self.config["YELLOW"], self.rect)
+    pygame.draw.rect(pantalla, self.config["GREEN"], self.rect)
 
 class EnemigoElite():
   def __init__(self, config, pantalla: pygame.Surface) -> None:

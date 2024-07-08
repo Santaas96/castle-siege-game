@@ -9,6 +9,7 @@ class Jugador:
     self.rect = pygame.Rect(config["SCREEN_WIDTH"] // 2 - config["CHARACTER_WIDTH"] // 2, config["SCREEN_HEIGHT"] - config["CHARACTER_HEIGHT"], config["CHARACTER_WIDTH"], config["CHARACTER_HEIGHT"])
     self.velocidad = config['CHARACTER_INITIAL_SPEED']
     self.config = config
+    self.color = config["BLUE"]
     self.flechas: list[Flecha] = []
     self.arrow_boost = False
 
@@ -22,6 +23,9 @@ class Jugador:
       self.rect.x += self.velocidad
       if self.rect.left > self.config["SCREEN_WIDTH"]:
         self.rect.left = self.config["SCREEN_WIDTH"]
+    if teclas[pygame.K_SPACE]:
+      if self.arrow_boost:
+        self.disparar()
 
     for flecha in self.flechas[:]:
       flecha.actualizar()
@@ -36,7 +40,7 @@ class Jugador:
 
   def dibujar(self, pantalla: pygame.Surface):
     # pantalla.blit(self.image, self.rect)
-    pygame.draw.rect(pantalla, self.config["BLUE"], self.rect)
+    pygame.draw.rect(pantalla, self.color, self.rect)
 
     for flecha in self.flechas:
       flecha.dibujar(self.pantalla)

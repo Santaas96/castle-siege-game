@@ -14,4 +14,4 @@ class Flecha():
     
   def dibujar(self, pantalla: pygame.Surface):
     # pantalla.blit(self.image, self.rect)
-    pygame.draw.rect(pantalla, self.config["GREEN"], self.rect)
+    pygame.draw.rect(pantalla, self.config["BLUE"], self.rect)

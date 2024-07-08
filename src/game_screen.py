@@ -1,4 +1,5 @@
 import pygame
+from boost import Boost
 from enemigo import EnemigoElite, EnemigoNormal
 from quit import quit_game
 from game import Game
@@ -19,6 +20,11 @@ def init_game(pantalla: pygame.Surface, config):
   # Evento para agregar enemigo elite
   ADDELITEENEMY = pygame.USEREVENT + 3
   pygame.time.set_timer(ADDELITEENEMY, 2870)
+  # Evento para agregar un elemento Boost
+  ADDBOOST = pygame.USEREVENT + 4
+  pygame.time.set_timer(ADDBOOST, 10000)
+  # Evento para sacarle el boost al jugadnor
+  REMOVEBOOST = pygame.USEREVENT + 5
 
   while running:
     for event in pygame.event.get():
@@ -30,6 +36,11 @@ def init_game(pantalla: pygame.Surface, config):
         game_instance.enemigos.append(EnemigoNormal(game_instance.config, pantalla))
       if event.type == ADDELITEENEMY:
         game_instance.enemigos.append(EnemigoElite(game_instance.config, pantalla))
+      if event.type == ADDBOOST:
+        game_instance.boosts.append(Boost(game_instance.config, pantalla))
+      if event.type == REMOVEBOOST:
+        game_instance.jugador.arrow_boost = False
+        game_instance.jugador.color = config["BLUE"]
       if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_p:
           font = pygame.font.Font(None, 56)

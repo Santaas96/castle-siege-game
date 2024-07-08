@@ -22,7 +22,10 @@ def dibujar_boton(superficie: pygame.Surface, text: str, rect: pygame.Rect, colo
     pygame.draw.rect(superficie, hover_color, rect)
     if click[0] == 1 and action:
       pygame.time.delay(200)
-      action(superficie, config)
+      try:
+        action(superficie, config)
+      except TypeError:
+        action()
   else:
     pygame.draw.rect(superficie, color, rect)
   
@@ -71,7 +74,7 @@ def bubble_sort(comparador, lista:list) -> None:
 def sorted_map(comparador, lista:list) -> list:
   if not isinstance(lista,list):
     raise TypeError("No es una lista")
-  copia_lista = map_list(lambda numero: numero, lista)
+  copia_lista = map_list(lambda a: a, lista)
   bubble_sort(comparador, copia_lista)
   return copia_lista
 

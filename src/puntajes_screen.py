@@ -22,21 +22,21 @@ def puntajes_screen(pantalla: pygame.Surface, config):
       if event.type == pygame.QUIT:
         quit_game()
 
-    mostrar_texto(pantalla, f'TABLA MAYORES 5 PUNTAJES', fuente2, coordenada=(400, 150), color= config["MAGENTA"])
+    mostrar_texto(pantalla, f'TABLA MAYORES 5 PUNTAJES', fuente2, coordenada=(400, 100), color= config["MAGENTA"])
+
     CANTIDAD_PUNTAJES = 5
-    coord_y = 250
+    coord_y = 200
     for i in range(CANTIDAD_PUNTAJES):
       try:
-        if scores[i]:
-          mostrar_texto(pantalla, f'{i + 1})     {scores[i]}', fuente2, coordenada=(400, coord_y), color= config["GREEN"])
+        mostrar_texto(pantalla, f'{i + 1})     {scores[i]}', fuente2, coordenada=(400, coord_y), color= config["GREEN"])
       except IndexError:
         mostrar_texto(pantalla, f'{i + 1})     {0}', fuente2, coordenada=(400, coord_y), color= config["GREEN"])
       
       coord_y += 50
 
     from menu_screen import main_menu_screen
-    dibujar_boton(pantalla, "MENU", pygame.Rect(250, 650, 300, 50), config["BLUE"], config["YELLOW"], fuente1, config, main_menu_screen)
+    dibujar_boton(pantalla, "MENU", pygame.Rect(250, 500, 300, 50), config["BLUE"], config["YELLOW"], fuente1, config, main_menu_screen)
 
-    dibujar_boton(pantalla, "SALIR", pygame.Rect(300, 750, 200, 50), config["RED"], config["YELLOW"], fuente1, config, quit_game)
+    dibujar_boton(pantalla, "SALIR", pygame.Rect(300, 600, 200, 50), config["RED"], config["YELLOW"], fuente1, config, quit_game)
 
     pygame.display.flip()

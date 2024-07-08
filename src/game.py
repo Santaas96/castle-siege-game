@@ -1,4 +1,5 @@
 import pygame
+from boost import Boost
 from colisiones import detectar_colision_rectangulos
 from enemigo import EnemigoElite, EnemigoNormal
 from jugador import Jugador
@@ -13,6 +14,8 @@ class Game:
     self.jugador: Jugador = Jugador(config, pantalla)
     self.fuente = pygame.font.Font(None, 36)
     self.enemigos: list[EnemigoElite | EnemigoNormal] = [EnemigoNormal(config, pantalla), EnemigoElite(config, pantalla)]
+    self.boosts: list[Boost] = []
+    self.REMOVEBOOST = pygame.USEREVENT + 5
 
   def actualizar(self):
     self.jugador.actualizar()
@@ -20,9 +23,14 @@ class Game:
     for enemigo in self.enemigos:
       enemigo.actualizar()
 
+    for boost in self.boosts:
+      boost.actualizar()
+
     self.verificar_colisiones_flechas_enemigos()
     self.verificar_colisiones_enemigos_castillo()
     self.verificar_vida_castillo()
+    self.verificar_colision_jugador_boost()
+    self.verificar_colision_boost_fondo()
 
   def dibujar(self):
     self.pantalla.fill(self.config["BLACK"])
@@ -31,6 +39,9 @@ class Game:
 
     for enemigo in self.enemigos:
       enemigo.dibujar(self.pantalla)
+    
+    for boost in self.boosts:
+      boost.dibujar(self.pantalla)
 
     # Actualizo informacion de la partida
     mostrar_texto(self.pantalla, f'Score: {self.puntaje}', self.fuente, (20, 10), centered=False)
@@ -58,7 +69,7 @@ class Game:
     for enemigo in self.enemigos[:]:
       # Si toca el castillo le restamos la vida actual del enemigo a la vida del castillo
       if enemigo.rect.bottom > self.config["SCREEN_HEIGHT"] - self.config["CHARACTER_HEIGHT"]:
-        self.vida -= enemigo.vida
+        self.vida -= enemigo.vida * 2
         try:
           self.enemigos.remove(enemigo)
         except ValueError:
@@ -69,4 +80,16 @@ class Game:
       from game_over_screen import game_over_screen
       game_over_screen(self.pantalla, self.puntaje, self.config)
 
+  def verificar_colision_jugador_boost(self):
+    for boost in self.boosts[:]:
+      if detectar_colision_rectangulos(boost.rect, self.jugador.rect):
+        pygame.time.set_timer(self.REMOVEBOOST, self.config["BOOST_DURATION"], 1)
+        self.boosts.remove(boost)
+        self.jugador.arrow_boost = True
+        self.jugador.color = self.config["YELLOW"]
+
+  def verificar_colision_boost_fondo(self):
+    for boost in self.boosts[:]:
+      if boost.rect.top >= self.config["SCREEN_HEIGHT"]:
+        self.boosts.remove(boost)
 

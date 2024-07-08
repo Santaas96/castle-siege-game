@@ -1,34 +1,39 @@
 {
   "config": {
     "SCREEN_WIDTH": 800,
-    "SCREEN_HEIGHT": 900,
+    "SCREEN_HEIGHT": 700,
     "SIZE_SCREEN": [
       800,
-      900
+      700
     ],
     "CENTER_SCREEN": [
       400,
-      450
+      350
     ],
-    "CHARACTER_WIDTH": 40,
-    "CHARACTER_HEIGHT": 80,
-    "BIG_ENEMY_WIDTH": 60,
-    "BIG_ENEMY_HEIGHT": 70,
-    "BIG_ENEMY_SPEED": 1,
-    "SMALL_ENEMY_SPEED": 2,
-    "BIG_ENEMY_LIFEPOINTS": 4,
-    "SMALL_ENEMY_LIFEPOINTS": 2,
-    "SMALL_ENEMY_WIDTH": 40,
-    "SMALL_ENEMY_HEIGHT": 50,
-    "CHARACTER_INITIAL_SPEED": 8,
-    "FPS": 60,
     "ORIGIN": [
       0,
       0
     ],
+    "CHARACTER_WIDTH": 40,
+    "CHARACTER_HEIGHT": 80,
+    "CHARACTER_INITIAL_SPEED": 7,
+    "BIG_ENEMY_WIDTH": 60,
+    "BIG_ENEMY_HEIGHT": 70,
+    "BIG_ENEMY_SPEED": 1,
+    "BIG_ENEMY_LIFEPOINTS": 4,
+    "SMALL_ENEMY_SPEED": 2,
+    "SMALL_ENEMY_LIFEPOINTS": 2,
+    "SMALL_ENEMY_WIDTH": 40,
+    "SMALL_ENEMY_HEIGHT": 50,
+    "BOOST_WIDTH": 45,
+    "BOOST_HEIGHT": 45,
+    "BOOST_SPEED": 5,
+    "BOOST_DURATION": 3000,
+    "FPS": 60,
     "ARROW_WIDTH": 4,
     "ARROW_HEIGHT": 18,
     "ARROW_SPEED": 20,
+    "CASTLE_LIFEPOINTS": 100,
     "WHITE": [
       255,
       255,
@@ -63,8 +68,7 @@
       255,
       0,
       255
-    ],
-    "CASTLE_LIFEPOINTS": 100
+    ]
   },
   "scores": [
     1001,
