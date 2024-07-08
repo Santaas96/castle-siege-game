@@ -1,0 +1,74 @@
+{
+  "config": {
+    "SCREEN_WIDTH": 800,
+    "SCREEN_HEIGHT": 900,
+    "SIZE_SCREEN": [
+      800,
+      900
+    ],
+    "CENTER_SCREEN": [
+      400,
+      450
+    ],
+    "CHARACTER_WIDTH": 40,
+    "CHARACTER_HEIGHT": 80,
+    "BIG_ENEMY_WIDTH": 60,
+    "BIG_ENEMY_HEIGHT": 70,
+    "BIG_ENEMY_SPEED": 1,
+    "SMALL_ENEMY_SPEED": 2,
+    "BIG_ENEMY_LIFEPOINTS": 4,
+    "SMALL_ENEMY_LIFEPOINTS": 2,
+    "SMALL_ENEMY_WIDTH": 40,
+    "SMALL_ENEMY_HEIGHT": 50,
+    "CHARACTER_INITIAL_SPEED": 8,
+    "FPS": 60,
+    "ORIGIN": [
+      0,
+      0
+    ],
+    "ARROW_WIDTH": 4,
+    "ARROW_HEIGHT": 18,
+    "ARROW_SPEED": 20,
+    "WHITE": [
+      255,
+      255,
+      255
+    ],
+    "BLACK": [
+      0,
+      0,
+      0
+    ],
+    "BLUE": [
+      0,
+      0,
+      255
+    ],
+    "RED": [
+      255,
+      0,
+      0
+    ],
+    "GREEN": [
+      0,
+      255,
+      0
+    ],
+    "YELLOW": [
+      255,
+      255,
+      0
+    ],
+    "MAGENTA": [
+      255,
+      0,
+      255
+    ],
+    "CASTLE_LIFEPOINTS": 100
+  },
+  "scores": [
+    1001,
+    913,
+    1500
+  ]
+}
