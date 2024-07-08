@@ -7,12 +7,16 @@ from utils import mostrar_texto
 
 class Game:
   def __init__(self, pantalla: pygame.Surface, config) -> None:
+    imagen_fondo = pygame.image.load(config["GRASS_IMAGE"])
+    self.fondo = pygame.transform.scale(imagen_fondo, config["SIZE_SCREEN"])
+    imagen_castillo = pygame.image.load(config["CASTLE_IMAGE"])
+    self.castillo = pygame.transform.scale(imagen_castillo, (config["SCREEN_WIDTH"], config["CHARACTER_HEIGHT"]))
     self.pantalla = pantalla
     self.config = config
     self.puntaje: int = 0
     self.vida: int = config["CASTLE_LIFEPOINTS"]
     self.jugador: Jugador = Jugador(config, pantalla)
-    self.fuente = pygame.font.Font(None, 36)
+    self.fuente = pygame.font.Font(None, 40)
     self.enemigos: list[EnemigoElite | EnemigoNormal] = [EnemigoNormal(config, pantalla), EnemigoElite(config, pantalla)]
     self.boosts: list[Boost] = []
     self.REMOVEBOOST = pygame.USEREVENT + 5
@@ -33,7 +37,8 @@ class Game:
     self.verificar_colision_boost_fondo()
 
   def dibujar(self):
-    self.pantalla.fill(self.config["BLACK"])
+    self.pantalla.blit(self.fondo, self.config["ORIGIN"])
+    self.pantalla.blit(self.castillo, (0, self.config["SCREEN_HEIGHT"] - self.config["CHARACTER_HEIGHT"]))
 
     self.jugador.dibujar(self.pantalla)
 
@@ -45,7 +50,7 @@ class Game:
 
     # Actualizo informacion de la partida
     mostrar_texto(self.pantalla, f'Score: {self.puntaje}', self.fuente, (20, 10), centered=False)
-    mostrar_texto(self.pantalla, f'Castillo: {self.vida}%', self.fuente, coordenada=(self.config["SCREEN_WIDTH"] - 100, 20))
+    mostrar_texto(self.pantalla, f'Castillo: {self.vida}%', self.fuente, coordenada=(self.config["SCREEN_WIDTH"] - 110, 20))
   
   def verificar_colisiones_flechas_enemigos(self):
     for flecha in self.jugador.flechas[:]:

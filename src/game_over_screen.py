@@ -3,6 +3,9 @@ from quit import quit_game
 from utils import dibujar_boton, guardar_puntuacion, mostrar_texto
 
 def game_over_screen(pantalla: pygame.Surface, score: int, config):
+  imagen_fondo = pygame.image.load(config["FONDO_GAMEOVER_IMAGE"])
+  fondo = pygame.transform.scale(imagen_fondo, config["SIZE_SCREEN"])
+
   try:
     guardar_puntuacion('src/settings.json', score)
   except FileNotFoundError:
@@ -12,7 +15,7 @@ def game_over_screen(pantalla: pygame.Surface, score: int, config):
   fuente1 = pygame.font.Font(None, 36)
   fuente2 = pygame.font.Font(None, 50)
   while True:
-    pantalla.fill(config["BLACK"])
+    pantalla.blit(fondo, config["ORIGIN"])
 
     for event in pygame.event.get():
       if event.type == pygame.QUIT:

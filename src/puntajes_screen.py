@@ -3,6 +3,9 @@ from quit import quit_game
 from utils import cargar_datos, dibujar_boton, mostrar_texto, sorted_map
 
 def puntajes_screen(pantalla: pygame.Surface, config):
+  imagen_fondo = pygame.image.load(config["FONDO_LEADERBOARD_IMAGE"])
+  fondo = pygame.transform.scale(imagen_fondo, config["SIZE_SCREEN"])
+
   try:
     datos = cargar_datos('src/settings.json')
   except FileNotFoundError:
@@ -16,7 +19,7 @@ def puntajes_screen(pantalla: pygame.Surface, config):
   fuente2 = pygame.font.Font(None, 50)
 
   while True:
-    pantalla.fill(config["BLACK"])
+    pantalla.blit(fondo, config["ORIGIN"])
 
     for event in pygame.event.get():
       if event.type == pygame.QUIT:

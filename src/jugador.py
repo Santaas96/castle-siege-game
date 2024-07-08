@@ -3,10 +3,10 @@ from flecha import Flecha
 
 class Jugador:
   def __init__(self, config, pantalla: pygame.Surface):
-    # self.image = pygame.image.load(config['IMAGEN_JUGADOR'])
-    # self.rect = self.image.get_rect(center=(config['screen_width'] // 2, config['screen_height'] - 50))
-    self.pantalla = pantalla
+    imagen_cargada = pygame.image.load(config["CHARACTER_IMAGE"])
+    self.imagen = pygame.transform.scale(imagen_cargada, (config["CHARACTER_WIDTH"], config["CHARACTER_HEIGHT"]))
     self.rect = pygame.Rect(config["SCREEN_WIDTH"] // 2 - config["CHARACTER_WIDTH"] // 2, config["SCREEN_HEIGHT"] - config["CHARACTER_HEIGHT"], config["CHARACTER_WIDTH"], config["CHARACTER_HEIGHT"])
+    self.pantalla = pantalla
     self.velocidad = config['CHARACTER_INITIAL_SPEED']
     self.config = config
     self.color = config["BLUE"]
@@ -39,8 +39,7 @@ class Jugador:
     self.flechas.append(Flecha(self.config, self.rect.left))
 
   def dibujar(self, pantalla: pygame.Surface):
-    # pantalla.blit(self.image, self.rect)
-    pygame.draw.rect(pantalla, self.color, self.rect)
+    pantalla.blit(self.imagen, self.rect)
 
     for flecha in self.flechas:
       flecha.dibujar(self.pantalla)
