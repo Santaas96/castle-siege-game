@@ -8,8 +8,8 @@ def main_menu_screen(pantalla: pygame.Surface, config):
   imagen_fondo = pygame.image.load(config["FONDO_MENU_IMAGE"])
   fondo = pygame.transform.scale(imagen_fondo, config["SIZE_SCREEN"])
 
+  fuente2 = pygame.font.Font("./src/assets/fonts/StitchWarrior.ttf", 60)
   fuente = pygame.font.Font(None, 36)
-  fuente2 = pygame.font.Font(None, 50)
   while True:
     pantalla.blit(fondo, config["ORIGIN"])
 
@@ -17,7 +17,7 @@ def main_menu_screen(pantalla: pygame.Surface, config):
       if event.type == pygame.QUIT:
         quit_game()
 
-    mostrar_texto(pantalla, f'CASTLE SIEGE', fuente2, coordenada=(config["SCREEN_WIDTH"] // 2, 150), color= config["MAGENTA"])
+    mostrar_texto(pantalla, f'CASTLE SIEGE', fuente2, coordenada=(config["SCREEN_WIDTH"] // 2, 170), color= config["MAGENTA"])
 
     dibujar_boton(pantalla, "JUGAR", pygame.Rect(300, 250, 200, 50), config["BLUE"], config["YELLOW"], fuente, config, init_game)
 

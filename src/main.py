@@ -15,6 +15,8 @@ config = datos["config"]
 # CONFIGURO PANTALLA
 pantalla_principal = pygame.display.set_mode((config["SCREEN_WIDTH"], config["SCREEN_HEIGHT"]))
 pygame.display.set_caption("CASTLE SIEGE")
+favicon = pygame.image.load("./src/assets/imgs/castillo.png")
+pygame.display.set_icon(favicon)
 
 if __name__ == '__main__':
   main_menu_screen(pantalla_principal, config)
